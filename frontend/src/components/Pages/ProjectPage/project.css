@@ -1,0 +1,50 @@
+.project__container {
+	overflow-y: auto;
+	display: grid;
+	grid-template-columns: 18rem auto;
+}
+
+.tasks__container {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	/* Add styles for task items */
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.tasks__container:last-child {
+	border-bottom: none; /* Remove border for the last task */
+}
+
+.tasks__container::-webkit-scrollbar {
+	width: 0; /* Show scrollbar */
+}
+
+.task__comments__container {
+	padding-left: 60px;
+	padding-top: 40px;
+	/* padding-bottom: 20px; */
+}
+
+.comments__container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 40px;
+	max-height: 700px;
+	overflow-y: auto;
+}
+.default__comment {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 40px;
+	max-height: 400px;
+	overflow-y: auto;
+}
+.comments__container::-webkit-scrollbar {
+	width: 0;
+}
+/* 
+.contact__container {
+    margin-top: -15px;
+} */

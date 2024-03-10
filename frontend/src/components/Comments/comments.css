@@ -1,0 +1,59 @@
+.comments__content {
+	max-height: 150px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.comments__content::-webkit-scrollbar {
+	width: 0;
+}
+.comments__info {
+	margin-right: 2px;
+}
+
+.comments__card {
+	background-color: white;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+	border-radius: 0.75rem;
+}
+
+.comments__card-data {
+	font-size: var(--small-font-size);
+}
+
+.comments__card-title {
+	font-weight: var(--font-medium);
+}
+
+.comments__card-data {
+	display: block;
+	margin-bottom: var(--mb-0-75);
+}
+
+.delete__comment {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	font-size: small;
+	margin-left: 10px;
+	margin-bottom: 2px;
+	color: var(--blue);
+	font-family: "Montserrat", sans-serif;
+}
+.delete__comment button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.delete__comment button:hover i {
+	color: var(--red);
+}
+
+.delete__comment button i {
+	font-size: 24px;
+	color: #666; /* Change this color to your desired color */
+}

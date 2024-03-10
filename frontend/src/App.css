@@ -1,0 +1,101 @@
+:root {
+	--activeItem: #f799a354;
+	--smboxshadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+	--boxShadow: -79px 51px 60px rgba(0, 0, 0, 0.68);
+	--glass: rgba(255, 255, 255, 0.54);
+	--blue: rgba(38, 117, 181, 0.7);
+	--orange: rgba(255, 165, 0, 0.7);
+	--red: rgba(244, 85, 85, 0.7);
+	--blue2: #f7f9fd;
+
+	--header-height: 3rem;
+
+	/* ================ Colors ===================*/
+
+	--hue: 0;
+	--sat: 0%;
+	--title-color: hsl(var(--hue), var(--sat), 20%);
+	--title-color-dark: hsl(var(--hue), var(--sat), 0%);
+	--text-color: hsl(var(--hue), var(--sat), 46%);
+	--body-color: hsl(var(--hue), var(--sat), 98%);
+	--container-color: #fff;
+
+	/* ================ Font and typography ===================*/
+	--body-font: "Poppins", sans-serif;
+
+	/* .5rem = 8px | 1rem = 16px  */
+	--big-font-size: 3.5rem;
+	--h1-font-size: 2.25rem;
+	--h2-font-size: 1.5rem;
+	--h3-font-size: 1.25rem;
+	--normal-font-size: 1rem;
+	--small-font-size: 0.875rem;
+	--smaller-font-size: 0.813rem;
+	--tiny-font-size: 0.625rem;
+
+	/* ================ Font weight ===================*/
+	--font-normal: 400;
+	--font-medium: 500;
+	--font-semi-bold: 600;
+
+	/* ================ Margenes Bottom ===================*/
+
+	--mb-0-25: 0.25rem;
+	--mb-0-5: 0.5rem;
+	--mb-0-75: 0.75rem;
+	--mb-1: 1rem;
+	--mb-1-5: 1.5rem;
+	--mb-2: 2rem;
+	--mb-2-5: 2.5rem;
+	--mb-3: 3rem;
+
+	/* ================ Z index ===================*/
+	--z-tooltip: 10;
+	--z-fixed: 100;
+	--z-modal: 1000;
+}
+
+.App {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Inter", sans-serif;
+	min-height: 100vh;
+	background: Linear-gradient(
+		106.37deg,
+		rgb(211, 211, 206) 29.63%,
+		#f9f3f3 51.55%,
+		#d8d6d8 90.85%
+	);
+}
+
+.AppGlass {
+	display: grid;
+	height: 97%;
+	width: 97%;
+	border-radius: 2rem;
+	background-color: var(--glass);
+	overflow: hidden;
+	grid-template-columns: 11rem auto;
+}
+
+.App.login-background {
+	background-size: cover;
+	background-position: center;
+	background-image: url("./components/img1.png");
+}
+
+.filter-sidebar {
+	background-color: white;
+	border-radius: 2rem;
+}
+
+#glass-off {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#glass-off.visible {
+    opacity: 1;
+}
