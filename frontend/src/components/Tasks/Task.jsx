@@ -148,7 +148,7 @@ const Task = ({
 					<span
 						style={{ paddingLeft: "50px", paddingTop: "10px" }}
 						className="task__button"
-						onClick={() => toggleTab("More")}
+						onClick={() => toggleTab("More")} 
 					>
 						More
 						<i className="uil uil-arrow-right task__button-icon"></i>

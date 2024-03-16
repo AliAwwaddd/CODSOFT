@@ -323,7 +323,7 @@ app.post("/project/addTaskWithUsers", async (req, res) => {
 		// Check if users exist before inserting the task
 		const userCheckResults = await findUser(usernames);
 		if (userCheckResults.some((result) => result === false)) {
-			return res.status(200).json({ message: userCheckResults });
+			return res.status(400).json({ message: "At least one user was not found" });
 		}
 
 		// If all users exist, proceed with inserting the task

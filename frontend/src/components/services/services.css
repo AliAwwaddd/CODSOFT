@@ -112,6 +112,12 @@
 
 .services__modal-services {
 	row-gap: 0.75rem;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.services__modal-services::-webkit-scrollbar {
+	width: 0;
 }
 
 .services__modal-service {
@@ -154,8 +160,7 @@
 	width: 100px;
 }
 
-.radiaBar-plus{
-	
+.radiaBar-plus {
 	cursor: pointer;
 }
 

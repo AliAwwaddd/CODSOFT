@@ -19,6 +19,7 @@ const Services = ({
 	updateProgressFc,
 }) => {
 	const [error, setError] = useState("");
+	const [toggleState, setToggleState] = useState(0);
 	const [values, setValues] = useState({
 		description: "",
 		deadline: "",
@@ -35,12 +36,18 @@ const Services = ({
 		});
 	};
 
-	const { data: taskData, loading, fetchData } = useCreateTask();
 	const {
 		data: progressUpdateData,
 		loading: progressloading,
 		fetchData: updateProgress,
 	} = useUpdateProgress();
+
+	const {
+		data: taskData,
+		loading,
+		error: createError,
+		fetchData,
+	} = useCreateTask();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -59,25 +66,21 @@ const Services = ({
 			}
 			const data = { projectId, description, deadline, usernames };
 			await fetchData(data);
-			// console.log(taskData);
-
-			if (Object.values(taskData.message).includes(false)) {
-				setError("At least one user was not found");
-			} else {
-				// console.log(taskData);
-				setError("");
-				setValues((prev) => ({
-					...prev,
-					description: "",
-					deadline: "",
-					assignTo: "",
-				}));
-				setToggleState(null);
-			}
+			setError("");
+			setValues((prev) => ({
+				...prev,
+				description: "",
+				deadline: "",
+				assignTo: "",
+			}));
+			setToggleState(null);
 		} catch (error) {
-			console.error("Error:", error);
+			// console.error("Error:", error);
+			setError(error);
 		}
 	};
+
+	const continueCreateTask = () => {};
 
 	const handleSubmitProgress = async (event) => {
 		event.preventDefault();
@@ -94,8 +97,6 @@ const Services = ({
 			setError(error);
 		}
 	};
-
-	const [toggleState, setToggleState] = useState(0);
 
 	const toggleTab = (tabIndex) => {
 		setToggleState(toggleState === tabIndex ? null : tabIndex);
