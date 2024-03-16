@@ -30,7 +30,7 @@ const MainDash = () => {
 	if (loading) return <h3>Loading...</h3>;
 	if (error) return <div className="error">{error.message}</div>;
 
-	console.log("main dash rendering");
+	// console.log("main dash rendering");
 
 	return (
 		<div className="MainDash">

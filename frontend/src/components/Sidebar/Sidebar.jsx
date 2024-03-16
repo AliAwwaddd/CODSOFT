@@ -4,7 +4,7 @@ import "./sidebar.css";
 import { SidebarData } from "../../Data/Data";
 import { UilSignout } from "@iconscout/react-unicons";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../Context/AuthContext"; // Import useAuth hook from AuthContext
+import { useAuth } from "../../Context/AuthContext";
 
 const Sidebar = () => {
 	useEffect(() => {
@@ -12,10 +12,9 @@ const Sidebar = () => {
 		document.getElementById("glass-off").classList.add("AppGlass");
 	}, []);
 
-	const { userData, logout } = useAuth(); // Destructure logout function from useAuth
+	const { userData, logout } = useAuth();
 	const [selected, setSelected] = useState(0);
 
-	// Function to handle signout
 	const handleSignout = () => {
 		const confirmed = window.confirm(
 			"Are you sure you want to logout?"
@@ -23,7 +22,7 @@ const Sidebar = () => {
 		if (!confirmed) {
 			return;
 		}
-		logout(); // Call the logout function provided by useAuth
+		logout();
 	};
 
 	return (
@@ -52,7 +51,6 @@ const Sidebar = () => {
 						</Link>
 					);
 				})}
-				{/* Signout button */}
 				<div className="menu__item" onClick={handleSignout}>
 					<UilSignout />
 				</div>

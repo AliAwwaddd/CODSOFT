@@ -18,8 +18,10 @@ const useLogin = () => {
 		} catch (err) {
 			if (err.response && err.response.data) {
 				setError(err.response.data.message);
+				throw err;
 			} else {
 				setError("An unknown error occurred.");
+				throw err;
 			}
 		} finally {
 			setLoading(false);

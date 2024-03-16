@@ -31,7 +31,7 @@ const useFetchProjectsAndTasks = (selectedFilter) => {
 				);
 
 				setProjectsWithTasks(projectsWithTasks);
-				console.log(projectsWithTasks);
+				// console.log(projectsWithTasks);
 			} catch (error) {
 				console.error("Error fetching projects and tasks:", error);
 				setError(error);

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./services.css";
 import { CircularProgressbar } from "react-circular-progressbar";
@@ -36,7 +35,7 @@ const Services = ({
 		});
 	};
 
-	const { data, loading, fetchData } = useCreateTask();
+	const { data: taskData, loading, fetchData } = useCreateTask();
 	const {
 		data: progressUpdateData,
 		loading: progressloading,
@@ -58,14 +57,21 @@ const Services = ({
 				setError("Deadline must be a future date");
 				return;
 			}
+			const data = { projectId, description, deadline, usernames };
+			await fetchData(data);
+			// console.log(taskData);
 
-			await fetchData({ projectId, description, deadline, usernames });
-
-			if (Object.values(data).includes(false)) {
+			if (Object.values(taskData.message).includes(false)) {
 				setError("At least one user was not found");
 			} else {
+				// console.log(taskData);
 				setError("");
-				setValues({ description: "", deadline: "", assignTo: "" });
+				setValues((prev) => ({
+					...prev,
+					description: "",
+					deadline: "",
+					assignTo: "",
+				}));
 				setToggleState(null);
 			}
 		} catch (error) {
@@ -100,7 +106,10 @@ const Services = ({
 	return (
 		<div className="services__container container grid">
 			<div className="services__content">
-				<div className={isCreator ? "radiaBar radiaBar-plus" : "radiaBar"} onClick={() => isCreator && toggleTab(3)}>
+				<div
+					className={isCreator ? "radiaBar radiaBar-plus" : "radiaBar"}
+					onClick={() => isCreator && toggleTab(3)}
+				>
 					<CircularProgressbar
 						value={values.progress}
 						text={`${values.progress}%`}

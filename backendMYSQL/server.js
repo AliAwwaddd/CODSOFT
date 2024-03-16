@@ -94,7 +94,7 @@ app.post("/login", async (req, res) => {
 		console.error("Error during login:", error);
 		res
 			.status(500)
-			.json({ message: "Internal server error. Please try again later." });
+			.json({ message: "Internal server error. Please try again laterrrrrr." });
 	}
 });
 
@@ -323,10 +323,7 @@ app.post("/project/addTaskWithUsers", async (req, res) => {
 		// Check if users exist before inserting the task
 		const userCheckResults = await findUser(usernames);
 		if (userCheckResults.some((result) => result === false)) {
-			// If at least one user does not exist, return an error response
-			return res
-				.status(400)
-				.json({ message: "One or more users do not exist" });
+			return res.status(200).json({ message: userCheckResults });
 		}
 
 		// If all users exist, proceed with inserting the task
@@ -338,7 +335,7 @@ app.post("/project/addTaskWithUsers", async (req, res) => {
 		);
 
 		// Return success response with the results of task insertion
-		res.status(200).json({ results: taskInsertionResults });
+		res.status(200).json({ message: taskInsertionResults });
 	} catch (error) {
 		console.error("Error adding task:", error);
 		res

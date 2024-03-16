@@ -16,8 +16,12 @@ const Login = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		await loginUser(formData.username, formData.password);
-		setRedirect(true);
+		try {
+			await loginUser(formData.username, formData.password);
+			setRedirect(true);
+		} catch (err) {
+			console.log(err.message);
+		}
 	};
 
 	if (redirect) {
@@ -52,12 +56,12 @@ const Login = () => {
 					<FaLock className="icon" />
 				</div>
 
-				<div className="remember-forgot">
+				{/* <div className="remember-forgot">
 					<label>
 						<input type="checkbox" name="rememberMe" />
 						Remember me
 					</label>
-				</div>
+				</div> */}
 
 				{!loading && (
 					<button className="login-button" type="submit">

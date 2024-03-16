@@ -19,9 +19,11 @@ const Task = ({
 	updateTask,
 	deleteTaskFc,
 	updateDeadlineFc,
+	updateTaskProgresssFc,
 }) => {
 	const [activeTab, setActiveTab] = useState(null);
 	const [progress, updateProgress] = useState(barValue);
+	const [errorr, setError] = useState("");
 
 	const handleInput = (event) => {
 		const { name, value } = event.target;
@@ -53,6 +55,7 @@ const Task = ({
 		try {
 			console.log("New Progress:", newProgress);
 			await updateTaskProgresss({ id2, newProgress });
+			updateTaskProgresssFc(id2, newProgress);
 			setActiveTab(null);
 		} catch (error) {
 			console.error("Error updating progress:", error);
@@ -97,6 +100,16 @@ const Task = ({
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const newDeadline = formData.get("newDeadline");
+
+		const selectedDeadline = new Date(newDeadline);
+
+		const currentDate = new Date();
+
+		if (selectedDeadline < currentDate) {
+			setError("Deadline must be a future date");
+			return;
+		}
+
 		console.log("New deadline:", newDeadline);
 		try {
 			await updateTaskdeadline(id2, newDeadline);
@@ -214,7 +227,7 @@ const Task = ({
 					<div className="task__modal active-modal">
 						<div className="task__modal-content">
 							<i
-								onClick={() => setActiveTab(null)}
+								onClick={() => {setActiveTab(null); setError("");}}
 								className="uil uil-times task__modal-close"
 							></i>
 							<div className="task__title" style={{ marginBottom: "30px" }}>
@@ -248,6 +261,7 @@ const Task = ({
 										></i>
 									</button>
 								</span>
+								{errorr && <span className="error-message">{errorr}</span>}
 							</form>
 						</div>
 					</div>
@@ -278,7 +292,7 @@ const Task = ({
 									/>
 									<output htmlFor="progress">{progress}%</output>
 								</div>
-								{error && <span className="error-message">{error}</span>}
+								{error && <span className="error-message">{error || errorr}</span>}
 								<button className="submit-button-t" type="submit">
 									Update
 								</button>

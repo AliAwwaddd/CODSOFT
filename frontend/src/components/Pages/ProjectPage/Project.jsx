@@ -22,6 +22,22 @@ const Project = () => {
 		error: isCreatorError,
 	} = useIsCreator(projectId);
 
+	const updateTaskProgresssFc = (taskId , newProgress) => {
+		const taskIndex = tasks.findIndex((task)=> task.id == taskId);
+		
+		if (taskIndex !== -1) {
+			const updatedTasks = [...tasks];
+			// console.log(updatedTasks);
+			updatedTasks[taskIndex] = {
+				...updatedTasks[taskIndex],
+				progress: newProgress,
+			};
+			setTasks(updatedTasks);
+		}
+
+
+	};
+
 	const updateDeadline = (taskId, newDeadline) => {
 		const taskIndex = tasks.findIndex((task) => task.id == taskId);
 
@@ -152,6 +168,7 @@ const Project = () => {
 						updateTask={updateTask}
 						deleteTaskFc={deleteTask}
 						updateDeadlineFc={updateDeadline}
+						updateTaskProgresssFc={updateTaskProgresssFc}
 						key={task.id}
 					/>
 				))}
